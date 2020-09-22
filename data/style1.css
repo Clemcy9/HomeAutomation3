@@ -1,0 +1,76 @@
+/* .container{
+    background-color: aqua;
+    height: 5em;
+} */
+
+.signing-body{
+    background-color: #e6f2ff;
+}
+
+.container.signin-container{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.card.signin-card{
+    padding: 1em;
+    background-color: #f4f4f4;
+    box-shadow: 2px 2px 5px rgba(0,0 ,0,0.5);
+    -webkkit-box-shadow: 2px 2px 5px rgba(0,0 ,0,0.5);
+    -moz-box-shadow: 2px 2px 5px rgba(0,0 ,0,0.5);
+    border-radius: 1em;
+}
+
+img.signin-img{
+    padding: 0 .3em 1em;
+    margin:auto;
+    display: block;
+    width: 80%;
+    border-radius: 2em 0;
+}
+form.signin-form{
+    max-width: 80%;
+    margin: auto;
+}
+button.signin-btn{
+    /* color: white;
+    background-color: ; */
+    width: 100%;
+}
+.card-body{
+    padding: 0em;
+}
+.form-control{
+    /* padding:0.2em ; */
+    text-align: center;
+}
+
+nav{
+    /* border: blue 2px solid; */
+}
+.control{
+    /* border: blue 2px solid; */
+    box-shadow: 2px 2px 5px rgba(0,0 ,0,0.5);
+    height: 90vh;
+}
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #EF9E2C;
+}
+
+.controlBtn{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    border: cyan 2px solid;
+
+}
+.controlBtn button{
+    border-radius: 50%;
+    height: 25vh;
+    width: 30vw;

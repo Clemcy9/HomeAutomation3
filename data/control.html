@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelcatAuto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+       <h1>MelcatAuto</h1> 
+    </div>
+    
+    <main>
+        <h2 class="center">CONTROL PANE</h2>
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'powerStyle')" id="defaultOpen">Power</button>
+            <button class="tablinks" onclick="openCity(event, 'pumpStyle')">Water Pump</button>
+            <button class="tablinks" onclick="openCity(event, 'lightSyle')">Lights</button>
+        </div>
+        
+        <!-- Tab content -->
+        <div id="powerStyle" class="tabcontent parent">
+            
+            <div>
+               <h3>MODE: <strong>.%PMODE%.</strong></h3>
+                <h3>STATUS: <strong id="gen">.%Power%.</strong></h3>
+                <button id="on" onclick="Gen1()">GEN ON</button>
+                <button id="off" onclick="Gen2()">GEN OFF</button>
+            </div>
+        </div>
+    
+        <div id="pumpStyle" class="tabcontent parent">
+            <div>
+                <h3>MODE: <strong>.%WMODE%.</strong></h3>
+                <h3>STATUS: <strong id="pump">.%Pump%.</strong></h3>
+                <button id="on" onclick="Pump1()">PUMP ON</button>
+                <button id="off" onclick="Pump2()">PUMP OFF</button>
+            </div>
+    
+        </div>
+    
+        <div id="lightSyle" class="tabcontent parent">
+            <div>
+                <h3>Mode: <strong>.%LMODE%</strong></h3>
+                <h3>STATUS: <strong id="light">.%Light%.</strong></h3>
+                <button class="on" id="on" onclick="Light1()">LIGHT ON</button>
+                <button id="off" onclick="Light2()">LIGHT OFF</button>
+            </div>
+            
+        </div>
+    </main>
+    <script>
+        //tab menu script... does not function properly if placed in another file
+        document.getElementById("defaultOpen").click();
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
+
+        //all functions with 1 suffix represent on state, while those with 2 is off state
+        function Gen1() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("gen").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/onGen", true);
+            xhttp.send();
+        }
+        function Gen2() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("gen").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/offGen", true);
+            xhttp.send();
+        }
+
+        //for pump
+        function Pump1() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("pump").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/onPump", true);
+            xhttp.send();
+        }
+        function Pump2() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("pump").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/offPump", true);
+            xhttp.send();
+        }
+
+        //for light
+        function Light1() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("light").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/onLight", true);
+            xhttp.send();
+        }
+        function Light2() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("light").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/offLight", true);
+            xhttp.send();
+        }
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>
